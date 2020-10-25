@@ -1,0 +1,30 @@
+
+
+<body>
+
+{% if request.user.is_authenticated %}
+<p> <a href="{% url 'list' %}">Home</a> | <a href="{% url 'logout' %}"> Logout</a> </p>
+<p> Hello, {{request.user.username}} |  </p>
+
+{% else %}
+
+<p>
+    <a href="{% url 'home_view' %}">Home</a> |
+    <a href="{% url 'register' %}"> Register </a> |
+    <a href="{% url 'login_view' %}" >Login</a>
+</p>
+
+<p>View Tasks</p>
+
+
+{% endif %}
+
+
+
+<h3>CHORE SCORE</h3>
+
+{% for account in accounts %}
+    <p> {{account}}</p>
+
+    {% endfor %}
+</body>

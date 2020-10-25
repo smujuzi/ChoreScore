@@ -3,7 +3,7 @@
 <style>
 
 	body{
-		background-color: #638CB8;
+		background-color: #332B2B;
 	}
 
 	input{
@@ -14,40 +14,105 @@
 	}
 
 	input::placeholder {
-	  color: #d3d3d3;
+	  color: #a39a9a; /*Add new task text*/
 	}
 
-	.submit{
-		background-color: #6BA3E8;
+	#menu-nav {
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #ecf0f1;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+	#navigation-bar ul {
+	  border-radius: 4px;
+	  overflow: hidden;
+	}
+	#navigation-bar li {
+	  float: left;
+	  width: 50%;
+	}
+	#navigation-bar li:hover a::before {
+	  right: 0;
+	  left: 0;
+	}
+	#navigation-bar a {
+	  color: #848484;
+	  font-size: 20px;
+	  text-decoration: none;
+	  text-align: center;
+	  padding: 20px 0;
+	  display: block;
+	  position: relative;
+	  transition: all 0.3s ease;
+	}
+	#navigation-bar a:hover {
+	  color: #e74c3c;
+	}
+	#navigation-bar a::before {
+	  content: "";
+	  transition: all 0.4s ease-in-out;
+	  position: absolute;
+	  right: 50%;
+	  left: 50%;
+	  bottom: 0;
+	  height: 2px;
+	  background-color: #e74c3c;
+	}
+	#navigation-bar a:hover::before {
+	  right: 0;
+	  left: 0;
 	}
 
 	.center-column{
 		width:600px;
 		margin: 20px auto;
 		padding:20px;
-		background-color: #fff;
+		background-color: rgb(102, 98, 90);
 		border-radius: 3px;
 		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
 	}
 
 	.item-row{
-		background-color: #906abd;
+		background-color: #EAF9FE;
 		margin: 10px;
 		padding: 20px;
 		border-radius: 3px;
-		color: #fff;
-		font-size: 16px;
+		color: rgb(30, 59, 78);
+		font-size: 17px;
 		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
 	}
 
 	.btn-danger{
-		background-color: #ffae19;
-		border-color: #e59400;
+		background-color: #64ac43;
+		border-color: #7dad50;
 	}
 
 </style>
 
+
+
+
+<div id="menu-nav">
+	<div id="navigation-bar">
+	  <ul>
+		<li><a href="#"><i class="fa fa-home"></i><span>Home</span></a></li>
+
+		<li><a href="{% url 'logout' %}"><i class="fa fa-handshake"></i><span>Logout</span></a></li>
+
+
+	  </ul>
+	</div>
+
+</div>
+
+<b> <p style="color:white;"> Hello {{ name }} !</p> </b>
+	<p style="color:white;"> Child</p>
+
 <div class="center-column">
+
+	{% if request.user.is_admin %}
 
 	<form method="POST" action="/">
 		{% csrf_token %}
@@ -55,6 +120,9 @@
 		<input class="btn btn-info" type="submit" name="Create Task">
 	</form>
 
+	{% endif %}
+
+	<center> <h3 style="color:#FFFFFF;"> Tasks To Do!</h3> </center>
 	<div class="todo-list">
 
 	{% for task in tasks %}
@@ -65,7 +133,7 @@
 			{% if task.complete == True %}
 			<strike>{{task}}</strike>
 			{% else %}
-			<span>{{task}}</span>
+			<b><span>{{task}}</span></b>
 			{% endif %}
 		</div>
 	{% endfor %}

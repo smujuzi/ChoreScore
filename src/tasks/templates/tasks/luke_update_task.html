@@ -1,0 +1,111 @@
+<h1>Update Task Status</h1>
+<head>
+<style>
+    #menu-nav {
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #ecf0f1;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+ 
+#navigation-bar ul {
+  border-radius: 4px;
+  overflow: hidden;
+}
+#navigation-bar li {
+  float: left;
+  width: 20%;
+}
+#navigation-bar li:hover a::before {
+  right: 0;
+  left: 0;
+}
+#navigation-bar a {
+  color: #848484;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  padding: 20px 0;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+#navigation-bar a:hover {
+  color: #e74c3c;
+}
+#navigation-bar a::before {
+  content: "";
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  background-color: #e74c3c;
+}
+#navigation-bar a:hover::before {
+  right: 0;
+  left: 0;
+}
+ 
+li {
+	list-style: none;
+}
+
+    body{
+        background-color: #251d14;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        margin: 10px;
+    }
+    form {
+        display: inline-block;
+        word-spacing: 20px;
+        font-size: 25px;
+        width:600px;
+        margin: 20px auto;
+        padding:20px;
+        background-color: rgb(102, 98, 90);
+        border-radius: 3px;
+        box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+    }
+    input[type=button], input[type=submit], input[type=reset] {
+        background-color: #24a0be;
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 2px 6px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 3px; 
+    }
+    .button1:hover{
+        background-color: #1f6c80;
+        color: white;
+    }
+
+</style>
+</head>
+<div id="menu-nav">
+	<div id="navigation-bar">
+	  <ul>
+		<li><a href="#"><i class="fa fa-home"></i><span>Home</span></a></li>
+		<li><a href="add.html"><i class="fa fa-handshake"></i><span>New Task</span></a></li>
+		<li><a href="#"><i class="fa fa-user"></i><span>###</span></a></li>
+		<li><a href="#"><i class="fa fa-book"></i><span>###</span></a></li>
+		<li><a href="#"><i class="fa fa-rss"></i> <span>###</span></a></li>
+	  </ul>
+	</div>
+	
+</div>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form}}
+    <hr>
+    <input class="button button1" type="submit" name="Update Task Status">
+
+
+</form>

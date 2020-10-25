@@ -7,7 +7,11 @@ from .forms import *
 # Create your views here.
 
 def index(request):
+	context = {}
 	tasks = Task.objects.all()
+	name = request.user.email
+	print(name)
+
 
 	form = TaskForm()
 
@@ -18,8 +22,15 @@ def index(request):
 		return redirect('/')
 
 
-	context = {'tasks':tasks, 'form':form}
+	context = {'tasks':tasks, 'form':form, 'name':name}
 	return render(request, 'tasks/list.html', context)
+
+def test(request):
+
+	context = {}
+
+	return render(request, 'tasks/luke_add.html', context)
+
 
 def updateTask(request, pk):
 	task = Task.objects.get(id=pk)
