@@ -101,11 +101,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 
-    {% if request.user.is_authenticated %}
-<p> <a href="#">Home</a> | <a href="{% url 'logout' %}" class="btn btn-ms btn-primary btn-block"> Logout</a> </p>
-<p> Hello, {{request.user.username}} |  </p>
-
-{% else %}
 
 <p>
     <a href="#" class="btn btn-ms btn-primary">Home</a> |
@@ -115,7 +110,7 @@
 
 
 
-{% endif %}
+
 
 
     

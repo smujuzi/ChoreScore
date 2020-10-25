@@ -14,9 +14,8 @@ from account.views import (
 urlpatterns = [
 	
 	
-	
+	path('', views.login_view, name="login_view"),
 	path('register/', views.register, name="register"),
-	path('login_view/', views.login_view, name="login_view"),
 	path('logout/', views.logout_view, name="logout"),
 	path('home/', views.home_view, name="home_view"),
 
